@@ -1,1 +1,7 @@
-<img src="<?= $value->getThumb(80, 80, 'crop') ?>">
+<?php
+    if ($record->product_image) :
+?>
+    <img src="<?= $value->getThumb(80, 80, 'crop') ?>">
+<?php
+    endif;
+?>

@@ -55,9 +55,9 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'port'      => '',
+            'port'      => '33060',
             'database'  => 'homestead',
-            'username'  => 'root',
+            'username'  => 'homestead',
             'password'  => 'secret',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',

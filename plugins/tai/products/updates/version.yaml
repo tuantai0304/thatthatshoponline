@@ -12,3 +12,6 @@
 1.0.5:
     - 'Updated table tai_products_product'
     - builder_table_update_tai_products_product_2.php
+1.0.6:
+    - 'Seed movies'
+    - seed.php

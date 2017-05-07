@@ -1,6 +1,6 @@
 <?php namespace Tai\Products\Models;
 
-use Model;
+use October\Rain\Database\Model;
 
 /**
  * Model
@@ -28,10 +28,15 @@ class Products extends Model
      * Relation
      * */
     public $attachOne = [
-      'product_image' => 'System\Models\File'
+      'product_image' => 'System\Models\File',
+        'delete' => true
     ];
 
     public $attachMany = [
-      'product_gallery' => 'System\Models\File'
+      'product_gallery' => 'System\Models\File',
+        'delete' => true
     ];
+
+
+
 }

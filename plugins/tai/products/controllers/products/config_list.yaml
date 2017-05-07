@@ -9,3 +9,4 @@ toolbar:
     search:
         prompt: 'backend::lang.list.search_prompt'
 recordUrl: 'tai/products/products/update/:id'
+recordsPerPage: 15
