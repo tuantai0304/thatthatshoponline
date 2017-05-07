@@ -1,0 +1,10 @@
+name: Products
+form: $/tai/products/models/products/fields.yaml
+modelClass: Tai\Products\Models\Products
+defaultRedirect: tai/products/products
+create:
+    redirect: 'tai/products/products/update/:id'
+    redirectClose: tai/products/products
+update:
+    redirect: tai/products/products
+    redirectClose: tai/products/products

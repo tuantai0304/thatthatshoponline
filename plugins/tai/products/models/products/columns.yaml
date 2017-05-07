@@ -1,0 +1,10 @@
+columns:
+    name:
+        label: 'Product name'
+        type: text
+        searchable: true
+        sortable: true
+    description:
+        label: Description
+        type: html
+        searchable: true

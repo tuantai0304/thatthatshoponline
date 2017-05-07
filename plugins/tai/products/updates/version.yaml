@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table tai_products_product'
+    - builder_table_create_tai_products_product.php
+1.0.3:
+    - 'Created table tai_products_categories'
+    - builder_table_create_tai_products_categories.php
+1.0.4:
+    - 'Updated table tai_products_product'
+    - builder_table_update_tai_products_product.php
+1.0.5:
+    - 'Updated table tai_products_product'
+    - builder_table_update_tai_products_product_2.php

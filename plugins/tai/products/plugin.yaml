@@ -1,0 +1,11 @@
+plugin:
+    name: 'tai.products::lang.plugin.name'
+    description: 'Plugin to manage items for Thatthatshoponline'
+    author: Tai
+    icon: oc-icon-shopping-cart
+    homepage: ''
+navigation:
+    products:
+        label: Products
+        url: tai/products/products
+        icon: icon-shopping-cart

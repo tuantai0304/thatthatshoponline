@@ -82,6 +82,8 @@ url = "/"
 				'assets/vendor/modernizr/modernizr.min.js',
 			]|theme }}"></script>
 
+    {% styles %}
+
 </head>
 <body>
 
@@ -125,6 +127,8 @@ url = "/"
 <!-- Current Page Vendor and Views -->
 <script src="{{ [
         'assets/javascript/views/view.contact.js',
+        'assets/vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.js',
+        'assets/vendor/elevatezoom/jquery.elevatezoom.js',
         ]|theme }}"></script>
 
 
@@ -144,6 +148,9 @@ url = "/"
 <script src="{{ [
                 'assets/javascript/theme.init.js'
             ]|theme }}"></script>
+
+{% framework extras %}
+{% scripts %}
 
 </body>
 </html>

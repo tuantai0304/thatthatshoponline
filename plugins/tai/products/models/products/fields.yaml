@@ -1,0 +1,46 @@
+fields:
+    name:
+        label: 'Product name'
+        span: full
+        required: 1
+        type: text
+    description:
+        label: 'Product description'
+        span: full
+        size: ''
+        oc.commentPosition: ''
+        type: richeditor
+    product_image:
+        label: 'Product Image'
+        oc.commentPosition: ''
+        mode: image
+        imageWidth: '100'
+        imageHeight: '100'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: left
+        type: fileupload
+    product_gallery:
+        label: 'File upload'
+        oc.commentPosition: ''
+        mode: image
+        prompt: 'Hold shift key to select multiple images'
+        imageWidth: '80'
+        imageHeight: '80'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: right
+        type: fileupload
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: auto
+        defaultFrom: slug
+        preset:
+            field: name
+            type: slug
+        type: text
