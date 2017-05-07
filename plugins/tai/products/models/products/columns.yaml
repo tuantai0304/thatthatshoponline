@@ -8,3 +8,7 @@ columns:
         label: Description
         type: html
         searchable: true
+    product_image:
+        label: 'Product Image'
+        type: partial
+        path: ~/plugins/tai/products/models/products/_img_logo.htm
