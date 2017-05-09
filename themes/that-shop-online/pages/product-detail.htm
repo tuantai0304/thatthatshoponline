@@ -1,12 +1,14 @@
 title = "Product detail"
-url = "/products/:slug"
+url = "/products/:id"
 layout = "default"
 is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
 
 [builderDetails]
 modelClass = "Tai\Products\Models\Products"
-identifierValue = "{{ :slug }}"
-modelKeyColumn = "slug"
+identifierValue = "{{ :id }}"
+modelKeyColumn = "id"
 displayColumn = "name"
 notFoundMessage = "Record not found"
 ==
