@@ -1,0 +1,10 @@
+name: Category
+form: $/tai/products/models/categories/fields.yaml
+modelClass: Tai\Products\Models\Categories
+defaultRedirect: tai/products/category
+create:
+    redirect: 'tai/products/category/update/:id'
+    redirectClose: tai/products/category
+update:
+    redirect: tai/products/category
+    redirectClose: tai/products/category

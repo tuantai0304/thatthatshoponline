@@ -1,0 +1,10 @@
+columns:
+    name:
+        label: Category
+        type: text
+        searchable: true
+        sortable: true
+    description:
+        label: Description
+        type: text
+        searchable: true

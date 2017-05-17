@@ -1,0 +1,6 @@
+scopes:
+  categories:
+    label: Category
+    modelClass: Tai\Products\Models\Categories
+    conditions: id in (select product_id from tai_products_categories_products where category_id in (:filtered)  )
+    nameFrom: name

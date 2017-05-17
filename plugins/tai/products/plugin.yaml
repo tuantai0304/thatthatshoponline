@@ -9,3 +9,8 @@ navigation:
         label: Products
         url: tai/products/products
         icon: icon-shopping-cart
+        sideMenu:
+            product_categories:
+                label: Categories
+                url: tai/products/category
+                icon: icon-tags

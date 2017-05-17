@@ -6,6 +6,9 @@ class Plugin extends PluginBase
 {
     public function registerComponents()
     {
+        return [
+          'Tai\Products\Components\Category' => 'categories'
+        ];
     }
 
     public function registerSettings()

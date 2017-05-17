@@ -12,3 +12,9 @@ columns:
         label: 'Product Image'
         type: partial
         path: ~/plugins/tai/products/models/products/_img_logo.htm
+    categories:
+        label: Categories
+        type: text
+        searchable: true
+        select: name
+        relation: categories

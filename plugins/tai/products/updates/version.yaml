@@ -15,3 +15,15 @@
 1.0.6:
     - 'Seed movies'
     - seed.php
+1.0.7:
+    - 'Created table tai_products_categories_products'
+    - builder_table_create_tai_products_categories_products.php
+1.0.8:
+    - 'Updated table tai_products_categories'
+    - builder_table_update_tai_products_categories.php
+1.0.9:
+    - 'Updated table tai_products_categories'
+    - builder_table_update_tai_products_categories_2.php
+1.0.10:
+    - 'Seed Category'
+    - seedCategory.php

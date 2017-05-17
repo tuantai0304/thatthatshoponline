@@ -44,3 +44,10 @@ fields:
             field: name
             type: slug
         type: text
+    categories:
+        label: 'Product Categories'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: 'Category Name'
+        span: auto
+        type: relation

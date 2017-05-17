@@ -1,0 +1,9 @@
+<?php
+
+if (!$record->categories->isEmpty())
+    echo implode(",", array_map(
+        function ($o){return $o->name;},
+        json_decode($record->categories)
+    ));
+else
+    echo "Uncategorized";

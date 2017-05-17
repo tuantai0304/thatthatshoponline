@@ -37,6 +37,12 @@ class Products extends Model
         'delete' => true
     ];
 
-
-
+    public $belongsToMany = [
+        'categories' => [
+            'Tai\Products\Models\Categories',
+            'table' => 'tai_products_categories_products',
+            'key' => 'product_id',
+            'otherKey' => 'category_id',
+        ]
+    ];
 }
