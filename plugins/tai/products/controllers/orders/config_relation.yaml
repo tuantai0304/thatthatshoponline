@@ -1,0 +1,17 @@
+products:
+  label: Product
+  view:
+    list: $/tai/products/models/products/columns.yaml
+    toolbar: add|remove
+  manage:
+    showSearch: true
+    recoredsPerPage: 10
+    list: $/tai/products/models/products/columns.yaml
+    form: $/tai/products/models/products/fields.yaml
+#  pivot:
+#    form:
+#      fields:
+#        pivot[quantity]:
+#          label: Quantity
+#          defaultForm: quantity
+#          span: auto

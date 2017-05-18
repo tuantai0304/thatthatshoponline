@@ -48,7 +48,7 @@ class Products extends Model
             'Tai\Products\Models\Orders',
             'table' => 'tai_products_products_orders',
             'key' => 'product_id',
-            'otherKey' => 'order_id',
+            'otherKey' => 'order_id'
         ]
     ];
 }

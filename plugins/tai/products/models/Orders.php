@@ -30,6 +30,7 @@ class Orders extends Model
             'table' => 'tai_products_products_orders',
             'key' => 'order_id',
             'otherKey' => 'product_id',
+            'pivot' => ['quantity']
         ]
     ];
 }

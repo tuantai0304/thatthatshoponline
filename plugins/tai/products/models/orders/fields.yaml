@@ -21,8 +21,6 @@ fields:
         type: text
     products:
         label: Products
-        oc.commentPosition: ''
-        nameFrom: name
-        descriptionFrom: description
         span: auto
-        type: relation
+        type: partial
+        path: ~/plugins/tai/products/models/orders/_rel_products.htm
