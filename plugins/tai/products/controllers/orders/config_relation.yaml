@@ -1,17 +1,31 @@
 products:
   label: Product
   view:
-    list: $/tai/products/models/products/columns.yaml
+    list:
+      columns:
+        name:
+          label: 'Product name'
+          type: text
+          searchable: true
+          sortable: true
+        product_image:
+          label: 'Product Image'
+          type: partial
+          path: ~/plugins/tai/products/models/products/_img_logo.htm
+        pivot[quantity]:
+          label: 'Quantity'
+          type: number
+
     toolbar: add|remove
   manage:
     showSearch: true
     recoredsPerPage: 10
     list: $/tai/products/models/products/columns.yaml
-    form: $/tai/products/models/products/fields.yaml
-#  pivot:
-#    form:
-#      fields:
-#        pivot[quantity]:
-#          label: Quantity
-#          defaultForm: quantity
-#          span: auto
+#    form: $/tai/products/models/products/fields.yaml
+  pivot:
+    form:
+      fields:
+        pivot[quantity]:
+          label: Quantity
+          defaultForm: quantity
+          span: auto

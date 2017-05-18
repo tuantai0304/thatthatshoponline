@@ -19,7 +19,7 @@ fields:
         oc.commentPosition: ''
         span: auto
         type: text
-    products:
+    products@update:
         label: Products
         span: auto
         type: partial
