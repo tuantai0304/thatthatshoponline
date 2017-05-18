@@ -1,0 +1,67 @@
+url = "/category/:id"
+layout = "default"
+==
+
+<?php
+    use Tai\Products\Models\Categories;
+    use Tai\Products\Models\Products;
+
+    function onStart() {
+        $this['category'] = Categories::where('id', '=', $this->param('id'))->first();
+        $this['products'] = $this['category']->products()->paginate(10);
+        $this['all_products'] = Products::paginate(10);
+    }
+
+    ?>
+==
+
+<section id="layout-title">
+    <div class="container">
+        <h3>Shop</h3>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            {% partial 'shop/sidebar' %}
+        </div>
+        <div class="col-sm-8">
+           <!-- Filters -->
+            <h4>{{ category.name }}</h4>
+            <hr>
+<!--                <li><a href="#recommended" data-toggle="tab">Recommended</a></li>-->
+
+            <div class="row">
+                <div class="tab-content">
+
+                    <!-- All-->
+                    <div class="tab-pane fade in active" id="category">
+                        {% for product in products %}
+
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="shop-product">
+                                <a href="{{ 'shop/product'|page }}"><img src="{{ product.product_image.path }}" class="img-responsive" alt=""></a>
+                                <a href="{{ 'shop/product'|page }}"><h6>{{ product.name }}</h6></a>
+                                <a href="#" class="btn btn-sm btn-info"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                            </div>
+                        </div>
+
+                        {% else %}
+                        <div class="col-sm-6 col-lg-4">
+                            No products found
+                        </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pull-right">
+                    {{ products.render|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

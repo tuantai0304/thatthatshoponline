@@ -2,6 +2,7 @@
 
 use Backend\Classes\Controller;
 use BackendMenu;
+use Symfony\Component\HttpFoundation\Request;
 
 class Products extends Controller
 {

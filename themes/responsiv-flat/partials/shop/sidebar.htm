@@ -1,13 +1,13 @@
-[builderList]
-modelClass = "Tai\Products\Models\Categories"
-scope = "-"
-displayColumn = "name"
-noRecordsMessage = "No records found"
-detailsPage = "-"
-detailsUrlParameter = "id"
-pageNumber = "{{ :page }}"
-
 [viewBag]
+==
+<?php
+
+    use Tai\Products\Models\Categories;
+
+    function onStart() {
+        $this['categories'] = Categories::has('products')->get();
+    }
+?>
 ==
 <!-- Search -->
 <form role="form">
@@ -21,33 +21,20 @@ pageNumber = "{{ :page }}"
     </div>
 </form>
 
-{% set records = builderList.records %}
-{% set displayColumn = builderList.displayColumn %}
-{% set noRecordsMessage = builderList.noRecordsMessage %}
-{% set detailsPage = builderList.detailsPage %}
-{% set detailsKeyColumn = builderList.detailsKeyColumn %}
-{% set detailsUrlParameter = builderList.detailsUrlParameter %}
 
 <!-- Categories -->
 <div class="panel-group" id="shopNav">
     <div class="panel panel-default">
         <ul class="list-group filter-list-group">
-   {% for record in records %}
+   {% for category in categories %}
             <li class="list-group-item">
             {% spaceless %}
-                {% if detailsPage %}
-                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
-                {% endif %}
-
-                {{ attribute(record, displayColumn) }}
-
-                {% if detailsPage %}
-                        <span class="badge">17</span></a>
-                {% endif %}
+                <a href="/category/{{category.id}}">{{category.name}}</a>
+                <span class="badge">{{ category.products.count }}</span>
             {% endspaceless %}
             </li>
       {% else %}
-        <li class="no-data">{{ noRecordsMessage }}</li>
+        <li class="no-data">No categories found</li>
     {% endfor %}
     
         </ul>
