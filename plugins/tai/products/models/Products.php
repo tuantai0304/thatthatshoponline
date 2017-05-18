@@ -43,6 +43,12 @@ class Products extends Model
             'table' => 'tai_products_categories_products',
             'key' => 'product_id',
             'otherKey' => 'category_id',
+        ],
+        'orders' => [
+            'Tai\Products\Models\Orders',
+            'table' => 'tai_products_products_orders',
+            'key' => 'product_id',
+            'otherKey' => 'order_id',
         ]
     ];
 }

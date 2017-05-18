@@ -27,3 +27,21 @@
 1.0.10:
     - 'Seed Category'
     - seedCategory.php
+1.0.11:
+    - 'Created table tai_products_orders'
+    - builder_table_create_tai_products_orders.php
+1.0.12:
+    - 'Created table tai_products_products_orders'
+    - builder_table_create_tai_products_products_orders.php
+1.0.13:
+    - 'Updated table tai_products_orders drop id'
+    - builder_table_update_tai_products_orders.php
+1.0.14:
+    - 'Updated table tai_products_orders Add primarykey'
+    - builder_table_update_tai_products_orders_2.php
+1.0.15:
+    - 'Updated table tai_products_products_orders delete ID column'
+    - builder_table_update_tai_products_products_orders.php
+1.0.16:
+    - 'Updated table tai_products_products_orders'
+    - builder_table_update_tai_products_products_orders_2.php

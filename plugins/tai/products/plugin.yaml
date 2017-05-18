@@ -14,3 +14,7 @@ navigation:
                 label: Categories
                 url: tai/products/category
                 icon: icon-tags
+            orders:
+                label: Orders
+                url: tai/products/orders
+                icon: icon-level-up

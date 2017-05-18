@@ -1,0 +1,4 @@
+title: Orders
+modelClass: Tai\Products\Models\Orders
+toolbar:
+    buttons: reorder_toolbar

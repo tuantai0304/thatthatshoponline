@@ -1,0 +1,13 @@
+columns:
+    name:
+        label: 'Customer Name'
+        type: text
+    phone:
+        label: Phone
+        type: text
+    email:
+        label: Email
+        type: text
+    address:
+        label: Address
+        type: text

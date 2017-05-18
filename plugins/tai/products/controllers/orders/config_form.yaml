@@ -1,0 +1,10 @@
+name: Orders
+form: $/tai/products/models/orders/fields.yaml
+modelClass: Tai\Products\Models\Orders
+defaultRedirect: tai/products/orders
+create:
+    redirect: 'tai/products/orders/update/:id'
+    redirectClose: tai/products/orders
+update:
+    redirect: tai/products/orders
+    redirectClose: tai/products/orders

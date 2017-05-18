@@ -1,0 +1,11 @@
+list: $/tai/products/models/orders/columns.yaml
+modelClass: Tai\Products\Models\Orders
+title: Orders
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'tai/products/orders/update/:id'
