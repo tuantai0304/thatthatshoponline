@@ -27,5 +27,5 @@ products:
       fields:
         pivot[quantity]:
           label: Quantity
-          defaultForm: quantity
+          defaultFrom: quantity
           span: auto
