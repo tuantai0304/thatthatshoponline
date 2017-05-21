@@ -1,0 +1,31 @@
+{% set products = __SELF__.products %}
+
+<form data-request="onOrder">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Products</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in products %}
+        <tr>
+            <td>
+                <img class="img-responsive" src="{{ item.product.product_image.path }}" alt="">
+                <div class="item">
+                    {{ item.product.name }}
+                </div>
+            </td>
+            <td><input type="hidden" name="id[]" value="{{item.product.id}}" class="form-control hidden"></td>
+            <td><input type="number" name="quantity[]" value="{{item.quantity}}" class="form-control"></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+
+    </table>
+    <ul class="text-right checkout">
+        <li><button class="btn btn-lg btn-success" type="submit"><i class="fa fa-hand-o-right"></i>Place Order</button></li>
+    </ul>
+</form>

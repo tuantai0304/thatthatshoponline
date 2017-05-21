@@ -1,17 +1,9 @@
 url = "/shop"
 layout = "default"
+
+[products_component]
 ==
-<?php
-    use Tai\Products\Models\Products;
-    use Tai\Products\Controllers\Products as ProductsController;
 
-    function onStart() {
-        $this['products'] = Products::paginate(10);
-    }
-
-
-?>
-==
 <section id="layout-title">
     <div class="container">
         <h3>Shop</h3>
@@ -37,17 +29,7 @@ layout = "default"
 
                     <!-- All-->
                     <div class="tab-pane fade in active" id="popular">
-                        {% for product in products %}
-
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="shop-product">
-                                <a href="{{ 'shop/product'|page }}"><img src="{{ product.product_image.path }}" class="img-responsive" alt=""></a>
-                                <a href="{{ 'shop/product'|page }}"><h6>{{ product.name }}</h6></a>
-                                <a href="#" class="btn btn-sm btn-info" data-request-data="product_id: {{product.id}}" data-request="onAddToCart" data-request-success="$('#cart-badge').html(data['cart_products'])"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                            </div>
-                        </div>
-
-                        {% endfor %}
+                        {% component 'products_component' %}
 <!--                        <div class="col-sm-6 col-lg-4">-->
 <!--                            <div class="shop-product feature">-->
 <!--                                <a href="{{ 'shop/product'|page }}"><img src="{{ 'assets/images/shop/macbook.jpg'|theme }}" class="img-responsive" alt=""></a>-->

@@ -1,37 +1,7 @@
 url = "/shop/cart"
 layout = "default"
-==
-<?php
 
-    use Tai\Products\Models\Products;
-    use Illuminate\Support\Facades\Session;
-
-    function onStart() {
-        $products = Session::get('products');
-//        dd($products);
-
-        $products_ids = array_keys($products);
-
-//        dd($products_ids);
-
-        $query = Products::whereIn('id', $products_ids)->get();
-
-        $products_lists = array();
-        foreach ($query as $item) {
-            $products_lists[] = [
-               'quantity' => $products[$item->id]['quantity'],
-                'product' => $item
-            ];
-        }
-
-//        dd($products_list);
-
-        $this['products_lists'] = $products_lists;
-
-        if ($products == null)
-            $products = array();
-    }
-?>
+[cart_component]
 ==
 
 <section id="layout-title">
@@ -41,36 +11,5 @@ layout = "default"
 </section>
 
 <div class="container shopping-cart">
-
-    <form data-request="onOrder">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Products</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in products_lists %}
-            <tr>
-                <td>
-                    <img class="img-responsive" src="{{ item.product.product_image.path }}" alt="">
-                    <div class="item">
-                        {{ item.product.name }}
-                    </div>
-                </td>
-                <td><input type="hidden" name="id[]" value="{{item.product.id}}" class="form-control hidden"></td>
-                <td><input type="number" name="quantity[]" value="{{item.quantity}}" class="form-control"></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-
-
-    </table>
-    <ul class="text-right checkout">
-        <li><button class="btn btn-lg btn-success" type="submit"><i class="fa fa-hand-o-right"></i>Place Order</button></li>
-    </ul>
-
-    </form>
-
+    {% component "cart_component" %}
 </div>
