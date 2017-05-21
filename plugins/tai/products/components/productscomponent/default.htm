@@ -4,10 +4,20 @@
 
 <div class="col-sm-6 col-lg-4">
     <div class="shop-product">
-        <a href="{{ 'shop/product'|page }}"><img src="{{ product.product_image.path }}" class="img-responsive" alt=""></a>
-        <a href="{{ 'shop/product'|page }}"><h6>{{ product.name }}</h6></a>
-        <a href="#" class="btn btn-sm btn-info" data-request-data="product_id: {{product.id}}" data-request="onAddToCart" data-request-success="$('#cart-badge').html(data['cart_products'])"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+        <a href="{{ 'shop/product'|page ({slug: product.slug }) }}"><img src="{{ product.product_image.path }}" class="img-responsive" alt=""></a>
+        <a href="{{ 'shop/product'|page ({slug: product.slug }) }}"><h6>{{ product.name }}</h6></a>
+        <a href="#" class="btn btn-sm btn-info" data-request-data="product_id: {{product.id}}"
+           data-request="onAddToCart"
+           data-request-flash
+           data-request-success="$('#cart-badge').html(data['cart_products'])"><i class="fa fa-shopping-cart"></i> Add to cart</a>
     </div>
 </div>
 
 {% endfor %}
+
+<div class="clearfix"></div>
+
+<!-- Pagination -->
+<div class="pull-right">
+    {{ products.render|raw }}
+</div>

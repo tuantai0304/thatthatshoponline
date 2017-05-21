@@ -7,7 +7,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-          'Tai\Products\Components\Category' => 'categories',
+          'Tai\Products\Components\Category' => 'categories_component',
           'Tai\Products\Components\ProductsComponent' => 'products_component',
           'Tai\Products\Components\CartComponent' => 'cart_component'
         ];

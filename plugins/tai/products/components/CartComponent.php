@@ -10,6 +10,7 @@ namespace Tai\Products\Components;
 use Cms\Classes\ComponentBase;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use October\Rain\Support\Facades\Flash;
 use Tai\Products\Models\Categories;
 use Tai\Products\Models\Orders;
 use Tai\Products\Models\Products;
@@ -56,21 +57,21 @@ class CartComponent extends ComponentBase
     }
 
     public function products() {
-        $products = Session::get('products');
-//        dd($products);
+        $products_lists = array();
 
-        $products_ids = array_keys($products);
+        $products = Session::get('products');
+        if ($products) {
+            $products_ids = array_keys($products);
 
 //        dd($products_ids);
 
-        $query = Products::whereIn('id', $products_ids)->get();
-
-        $products_lists = array();
-        foreach ($query as $item) {
-            $products_lists[] = [
-                'quantity' => $products[$item->id]['quantity'],
-                'product' => $item
-            ];
+            $query = Products::whereIn('id', $products_ids)->get();
+            foreach ($query as $item) {
+                $products_lists[] = [
+                    'quantity' => $products[$item->id]['quantity'],
+                    'product' => $item
+                ];
+            }
         }
 
         return $products_lists;
@@ -85,10 +86,10 @@ class CartComponent extends ComponentBase
         $quanties = Input::get('quantity');
         $ids = Input::get('id');
 
-        $name = "nametest";
-        $phone = "012345678";
-        $email = "tuantai0304@gmail.com";
-        $address = "1347 Centre Road";
+        $name = Input::get('name');
+        $email = Input::get('email');
+        $phone = Input::get('phone');
+        $address = Input::get('address');
 
         $new_order = Orders::create([
             'name' => $name,
@@ -101,5 +102,28 @@ class CartComponent extends ComponentBase
         foreach ($ids as $key => $value) {
             $new_order->products()->attach($value, ['quantity'=>$quanties[$key]]);
         }
+
+        /* Delete Session variables */
+        Session::forget('products');
+
+        Flash::success("Thank you for shopping with us! You are now redirected");
+    }
+
+    /*
+     * onRemoveProduct handler
+     *
+     * **/
+
+    public function onRemoveProduct() {
+        $id = input('product_id');
+
+        $products = Session::get('products');
+        if ($products == null)
+            $products = array();
+        array_forget($products, $id);
+
+        Session::put('products', $products);
+
+        Flash::success('The product has been removed');
     }
 }

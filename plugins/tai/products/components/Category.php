@@ -7,6 +7,8 @@
  */
 namespace Tai\Products\Components;
 
+use Tai\Products\Models\Categories;
+
 class Category extends \Cms\Classes\ComponentBase
 {
     public function componentDetails()
@@ -20,6 +22,7 @@ class Category extends \Cms\Classes\ComponentBase
     // This array becomes available on the page as {{ component.posts }}
     public function categories()
     {
-        return ['First Cat', 'Second Category', 'Third Category'];
+        $categories = Categories::has('products')->get();
+        return $categories;
     }
 }

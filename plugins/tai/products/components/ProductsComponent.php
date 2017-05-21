@@ -9,6 +9,8 @@ namespace Tai\Products\Components;
 
 use Cms\Classes\ComponentBase;
 use Illuminate\Support\Facades\Session;
+use October\Rain\Support\Facades\Flash;
+use phpDocumentor\Reflection\Types\Integer;
 use Tai\Products\Models\Categories;
 use Tai\Products\Models\Products;
 
@@ -57,6 +59,40 @@ class ProductsComponent extends ComponentBase
         return Products::paginate($this->property('maxItems'));
     }
 
+    public function categorizedProducts() {
+        $category = Categories::where('id', '=', $this->param('id'))->first();
+        $products = $category->products()->paginate($this->property('maxItems'));
+
+//        $this->page['category'] = $category;
+        return ['products'=>$products, 'category' => $category];
+    }
+
+    public function similarProducts() {
+        $slug = $this->param('slug');
+
+        $product = Products::where('slug', '=', $slug)->first();
+
+        $categories = $product->categories()->get()->toArray();
+        $str_cat = array_map(function($o){return $o['id']; }, $categories);
+
+//        dd($str_cat);
+        $similar_products = Products::whereHas('categories', function ($query) use ($str_cat){
+            $query->whereIn('tai_products_categories.id', $str_cat);
+        })->get()->take(5);
+//        $this->page['category'] = $category;
+//        dd($similar_products);
+
+        return $similar_products;
+
+    }
+
+    /* Get product detail */
+    public function product() {
+        $slug = $this->param('slug');
+
+        return Products::where('slug', '=', $slug)->first();
+    }
+
     public function onRun()
     {
         $this->prepareVars();
@@ -81,6 +117,8 @@ class ProductsComponent extends ComponentBase
     public function onAddToCart() {
         $id = input('product_id');
 
+        $product = Products::find($id);
+
         $products = Session::get('products');
         if ($products == null)
             $products = array();
@@ -100,6 +138,7 @@ class ProductsComponent extends ComponentBase
         Session::put('products', $products);
 
 //        $this['cart_products'];
+        Flash::success('Added "' . $product->name . '"');
 
         return [
             'cart_products' => $sum

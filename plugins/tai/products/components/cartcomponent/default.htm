@@ -1,6 +1,9 @@
 {% set products = __SELF__.products %}
 
-<form data-request="onOrder">
+
+<form data-request="onOrder"
+      data-request-redirect=" {{'shop/shop'|page}}"
+      data-request-flash>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -17,15 +20,73 @@
                     {{ item.product.name }}
                 </div>
             </td>
-            <td><input type="hidden" name="id[]" value="{{item.product.id}}" class="form-control hidden"></td>
-            <td><input type="number" name="quantity[]" value="{{item.quantity}}" class="form-control"></td>
+            <td class="hidden"><input type="hidden" name="id[]" value="{{item.product.id}}" class="form-control hidden"></td>
+            <td><input type="number" name="quantity[]" value="{{item.quantity}}" class="form-control">
+                </td>
+            <td>
+                <button class="btn btn-sm btn-danger"
+                        data-request="onRemoveProduct"
+                        data-request-data="product_id: {{item.product.id}}"
+                        data-request-flash
+                        data-request-redirect=" {{ 'shop/cart'|page }}">Remove</button>
+            </td>
         </tr>
         {% endfor %}
         </tbody>
-
-
     </table>
+
+    {% if products %}
+    <h4>Customer information</h4>
+    <div class="customer-info">
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Name*</label>
+            <div class="col-sm-10">
+                <input type="text" required class="form-control" name="name" placeholder="Your name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" name="email" placeholder="Your email">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="phone" class="col-sm-2 col-form-label">Phone*</label>
+            <div class="col-sm-10">
+                <input type="tel" required class="form-control" name="phone" placeholder="Your phone number">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="address" class="col-sm-2 col-form-label">Address*</label>
+            <div class="col-sm-10">
+                <input type="text" required class="form-control" name="address" placeholder="Your address">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="note" class="col-sm-2 col-form-label">Additional note</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" name="note" rows="3" placeholder="Additional notes"></textarea>
+            </div>
+        </div>
+
+    </div>
     <ul class="text-right checkout">
         <li><button class="btn btn-lg btn-success" type="submit"><i class="fa fa-hand-o-right"></i>Place Order</button></li>
     </ul>
+
+    {% else %}
+    <div class="row text-center">
+        <h4>You don't have any products yet</h4>
+        <a class="btn btn-lg btn-danger align-center" style="margin-bottom: 100px" href="{{ 'shop/shop'|page }}"><i class="fa fa-hand-o-right"></i>Shopping now</a>
+    </div>
+    {% endif %}
+
 </form>
+
+
+<style>
+    .customer-info .form-control {
+        width: 100%;
+    }
+</style>

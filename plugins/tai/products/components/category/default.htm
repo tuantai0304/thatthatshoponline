@@ -2,19 +2,18 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h4 class="panel-title">
-            <a class="accordion-toggle" data-toggle="collapse" href="#panel-filter-category">
-                Categories
-            </a>
-        </h4>
+        <h4 class="panel-title">Product categories</h4>
     </div>
-    <div id="panel-filter-category" class="accordion-body collapse in">
-        <div class="panel-body">
-            <ul>
-                {% for category in categories  %}
-                <li><a href="#">{{category}}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
+    <ul class="list-group filter-list-group">
+        {% for category in categories %}
+        <li class="list-group-item">
+            {% spaceless %}
+            <a href="/category/{{category.id}}">{{category.name}}</a>
+            <span class="badge">{{ category.products.count }}</span>
+            {% endspaceless %}
+        </li>
+        {% else %}
+        <li class="no-data">No categories found</li>
+        {% endfor %}
+    </ul>
 </div>
