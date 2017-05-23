@@ -14,6 +14,7 @@ class BuilderTableCreateTaiProductsProduct extends Migration
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->text('name')->nullable();
+            $table->text('slug')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->text('description');
         });

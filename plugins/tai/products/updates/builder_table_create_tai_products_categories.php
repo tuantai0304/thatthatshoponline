@@ -13,6 +13,10 @@ class BuilderTableCreateTaiProductsCategories extends Migration
             $table->increments('id')->unsigned();
             $table->string('name', 255)->nullable();
             $table->text('description');
+            $table->text('slug')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
     

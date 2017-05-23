@@ -18,11 +18,10 @@
 {# Note: Only one levels of sublinks are supported by Bootstrap 3 #}
 {% set
     links = {
-        'home': ['home', 'Home'],
-        'about':    ['samples/about', 'About Us'],
         'shop': ['shop/shop', 'Shop'],
-        'cart': ['shop/cart', 'Cart'],
+        'about':    ['samples/about', 'About Us'],
         'contact':  ['samples/contact', 'Contact Us'],
+        'cart': ['shop/cart', 'Cart'],
     }
 %}
 
@@ -57,18 +56,11 @@
                 <span class="sr-only">Toggle navigation</span>
                 <span class="fa fa-bars"></span>
             </button>
-            <a class="navbar-brand" href="{{ 'home'|page }}">Flat</a>
+            <a class="navbar-brand" style="background: none; padding-left: 0" href="{{ 'shop/shop'|page }}">That That Shop Online</a>
         </div>
         <div class="collapse navbar-collapse navbar-main-collapse">
             <ul class="nav navbar-nav navbar-right">
                 {{ nav.render_menu(links, cart_products) }}
-                <li>
-                    <button
-                        onclick="window.location='{{ 'samples/signin'|page }}'"
-                        class="btn btn-sm navbar-btn btn-primary navbar-right hidden-sm hidden-xs">
-                        Sign in
-                    </button>
-                </li>
             </ul>
         </div>
     </div>

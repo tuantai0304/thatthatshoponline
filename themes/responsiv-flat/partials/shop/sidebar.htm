@@ -5,17 +5,21 @@
 ==
 
 <!-- Search -->
-<form role="form">
+<form role="form" action="{{ 'shop/search' | page }}" method="get">
     <div class="well">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search products...">
+            <input name="q" type="text" class="form-control" placeholder="Search products...">
             <span class="input-group-btn">
-                <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
             </span>
         </div>
     </div>
 </form>
 
+<!--<form action="{{ 'search' | page }}" method="get">-->
+<!--    <input name="q" type="text" placeholder="What are you looking for?" autocomplete="off">-->
+<!--    <button type="submit">Search</button>-->
+<!--</form>-->
 
 <!-- Categories -->
 <div class="panel-group" id="shopNav">

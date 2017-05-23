@@ -1,9 +1,11 @@
-<div class="ss-result">
+<div class="row" style="margin-bottom: 3em">
     {% if result.thumb %}
-        {% partial __SELF__ ~ '::thumbnail' result = result %}
+        <div class="col-sm-2">
+            {% partial __SELF__ ~ '::thumbnail' result = result %}
+        </div>
     {% endif %}
-    <div class="ss-result__content">
-        {% partial __SELF__ ~ '::content' result = result %}
-    </div>
+        <div class="col-sm-10">
+                {% partial __SELF__ ~ '::content' result = result %}
+        </div>
     <hr/>
 </div>

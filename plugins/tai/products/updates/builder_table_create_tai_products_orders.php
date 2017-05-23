@@ -10,7 +10,7 @@ class BuilderTableCreateTaiProductsOrders extends Migration
         Schema::create('tai_products_orders', function($table)
         {
             $table->engine = 'InnoDB';
-            $table->integer('id');
+            $table->integer('id')->unsigned();
             $table->text('name')->nullable();
             $table->text('phone')->nullable();
             $table->text('email');

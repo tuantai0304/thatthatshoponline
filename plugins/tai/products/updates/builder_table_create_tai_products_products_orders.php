@@ -13,7 +13,7 @@ class BuilderTableCreateTaiProductsProductsOrders extends Migration
             $table->integer('id');
             $table->integer('product_id');
             $table->integer('order_id');
-            $table->double('quantity', 10, 0);
+            $table->decimal('quantity', 10, 0);
         });
     }
     

@@ -20,14 +20,14 @@ class SeedAllTables extends Seeder {
 
         $files = File::query()
 //            ->where('field','=','product_image')
-//            ->where('attachment_type','=', 'Tai\Products\Models\Products')
+            ->where('attachment_type','=', 'Tai\Products\Models\Products')
             ->getModels();
         foreach ($files as $file) {
             $file->delete();
         }
 
 
-        for($j=0; $j<30; $j++) {
+        for($j=0; $j<5; $j++) {
             $this->generateAProduct($faker);
         }
     }
@@ -39,14 +39,24 @@ class SeedAllTables extends Seeder {
      */
     public function generateAProduct($faker)
     {
+        $name = $faker->sentence($nbWords = 3, $variableNbWords = true);
+        $slug = str_slug($name);
         $product = Products::create([
-            'name' => $faker->sentence($nbWords = 3, $variableNbWords = true),
+            'name' => $name,
+            'slug' => $slug,
             'description' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         ]);
 
+//        $new_image = $faker->image('storage/temp/public', $width = 200, $height = 200, 'food');
+//        $file = new File();
+//        $file->data = $new_image;
+//        $file->attachment_type = 'Tai\Products\Models\Products';
+//        $file->attachment_id = $product->id;
+//        $file->field = 'product_image';
+//        $file->save();
 
         for ($i = 0; $i < 5; $i++) {
-            $image[$i] = $faker->image('storage/temp/public', $width = 100, $height = 100, 'food');
+            $image[$i] = $faker->image('storage/temp/public', $width = 200, $height = 200, 'food');
 
             $file[$i] = new File();
             $file[$i]->data = $image[$i];

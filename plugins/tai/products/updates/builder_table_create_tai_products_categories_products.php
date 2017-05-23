@@ -18,22 +18,16 @@ class BuilderTableCreateTaiProductsCategoriesProducts extends Migration
             $table->timestamp('deleted_at')->nullable();
         });
 
-        Schema::table('tai_products_categories_products', function($table)
-        {
-            $table->foreign('category_id')->refrences('id')->on('tai_products_categories')->onDelete('cascade');
-            $table->foreign('product_id')->refrences('id')->on('tai_products_product')->onDelete('cascade');
-        });
+//        Schema::table('tai_products_categories_products', function($table)
+//        {
+//            $table->foreign('category_id')->refrences('id')->on('tai_products_categories')->onDelete('cascade');
+//            $table->foreign('product_id')->refrences('id')->on('tai_products_product')->onDelete('cascade');
+//        });
 
     }
     
     public function down()
     {
-
-        Schema::table('tai_products_categories_products', function($table)
-        {
-            $table->dropForeign('category_id');
-            $table->dropForeign('product_id');
-        });
         Schema::dropIfExists('tai_products_categories_products');
     }
 }

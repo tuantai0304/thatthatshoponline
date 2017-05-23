@@ -1,4 +1,6 @@
-<h4 class="ss-result__title">
+<div class="row">
+<div class="col-sm-10">
+<h5 style="margin-top: 0">
     <a href="{{ result.url }}">{{ result.title | raw }}</a>
     {% if __SELF__.showProviderBadge %}
         <span class="ss-result__badge">
@@ -10,12 +12,15 @@
     {# You can access it using result.meta.       #}
     {# To find out from which plugin the result   #}
     {# was returned you can use result.identifier #}
-</h4>
+</h5>
 
-<p class="ss-result__text">
-    {{ result.excerpt | raw }}
+<p>
+    {{ str_limit(result.excerpt | raw, 100) }}
 </p>
+</div>
 
-<p class="ss-result__url">
-    <a href="{{ result.url }}" class="ss-result__link">{{ __SELF__.visitPageMessage }} &rarr;</a>
-</p>
+<div class="col-sm-2">
+<a href="{{ result.url }}" class="btn btn-md btn-info">{{ __SELF__.visitPageMessage }} &rarr;</a>
+</div>
+
+</div>
